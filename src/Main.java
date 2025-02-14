@@ -13,19 +13,26 @@ public class Main {
         } while(true);
     }
 
-    public static void cambiarEstado(Solver solver, String resutado, String palabra) {
-        for (int i = 0; i < resutado.length(); i++) {
-            if(resutado.charAt(i) == 'b') {
+    public static void cambiarEstado(Solver solver, String resultado, String palabra) {
+        for (int i = 0; i < resultado.length(); i++) {
+            if(resultado.charAt(i) == 'b') {
                 solver.setCorrect(i, palabra.charAt(i));
-            } else if (resutado.charAt(i) == 'm') {
+            } else if (resultado.charAt(i) == 'm') {
                 solver.setIncorrect(i, palabra.charAt(i));
-                solver.setNotIncluded(palabra.charAt(i));
-            } else if (resutado.charAt(i) == 'r') {
+                if(!couldBeIncluded(palabra.charAt(i), resultado, palabra))
+                    solver.setNotIncluded(palabra.charAt(i));
+            } else if (resultado.charAt(i) == 'r') {
                 solver.setUnplaced(palabra.charAt(i));
                 solver.setIncorrect(i, palabra.charAt(i));
             }
         }
     }
 
-
+    private static boolean couldBeIncluded(char letter, String resultado, String palabra) {
+        for (int i = 0; i < palabra.length(); i++) {
+            if(palabra.charAt(i) == letter && (resultado.charAt(i) == 'r' || resultado.charAt(i) == 'b'))
+                return true;
+        }
+        return false;
+    }
 }

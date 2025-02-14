@@ -650,6 +650,7 @@ email
 embed
 ember
 emcee
+emery
 empty
 enact
 endow
