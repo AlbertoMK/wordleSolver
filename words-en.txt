@@ -1883,6 +1883,7 @@ spout
 spray
 spree
 sprig
+spume
 spunk
 spurn
 spurt
