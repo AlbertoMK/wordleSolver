@@ -17,7 +17,7 @@ public class Solver {
 
     public Solver() {
         try {
-            words = new String[2310];
+            words = new String[2311];
             Scanner s = new Scanner(new FileReader("words-en.txt"));
             int i = 0;
             while (s.hasNext()) {
